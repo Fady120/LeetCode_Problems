@@ -18,3 +18,4 @@ class Solution(object):
             return strs[0]
         else:
             return compare(strs, strs[0], 0, '')
+        
