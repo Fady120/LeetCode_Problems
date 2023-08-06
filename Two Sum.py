@@ -12,3 +12,4 @@ class Solution(object):
             return find(current + 1)
 
         return find(0)
+    

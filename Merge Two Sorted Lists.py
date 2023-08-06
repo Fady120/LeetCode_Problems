@@ -22,3 +22,4 @@ class Solution(object):
             current = current.next
         current.next = list1 or list2
         return head.next
+    
