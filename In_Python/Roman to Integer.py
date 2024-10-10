@@ -1,44 +1,18 @@
-class Solution(object):
-    def romanToInt(self, s):
+class Solution:
+    def romanToInt(self, s: str) -> int:
         """
         :type s: str
         :rtype: int
         """
-
-        intgers = []
-        final = [] 
-
-        flagAdd = 0
-        i = 0
-
-        for roman in s:
-            if(roman == 'I'):
-                intgers.append(1)
-            elif(roman == 'V'):
-                intgers.append(5)
-            elif(roman == 'X'):
-                intgers.append(10)
-            elif(roman == 'L'):
-                intgers.append(50)
-            elif(roman == 'C'):
-                intgers.append(100)
-            elif(roman == 'D'):
-                intgers.append(500) 
-            elif(roman == 'M'):
-                intgers.append(1000) 
-
-        while (i <= len(intgers)-2):
-            if(intgers[i] < intgers[i+1]):
-                subValue = intgers[i+1] - intgers[i]
-                final.append(subValue)
-                i += 1
-                if(i >= len(intgers)-1):
-                    flagAdd = 1
-            else:
-                final.append(intgers[i])
-            i += 1
-
-        if(flagAdd == 0):
-            final.append(intgers[len(intgers)-1])
         
-        return sum(final)
+        romanDec = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
+        total = 0
+
+        s = s.replace("IV", "IIII").replace("IX", "VIIII") \
+             .replace("XL", "XXXX").replace("XC", "LXXXX") \
+             .replace("CD", "CCCC").replace("CM", "DCCCC")
+
+        for i in s:
+            total += romanDec[i]
+
+        return total
